@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="style.css">
+   <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet" />
+   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+
+   <title>Cadastro - STUDIO GHIBLI</title>
+</head>
+
+<body>
+
+   <div id="inicio">
+      <header>
+         <a href="index.html"><img src="img/ghibli-icon.png" /></a>
+         <div id="topicos">
+            <div class="dropdown">
+               <button class="topic">
+                  <p>sobre <i class="bx bx-chevron-down"></i></p>
+               </button>
+               <div class="ddmenu">
+                  <a href="historia.html">
+                     <p>história</p>
+                  </a>
+                  <a href="diretores.html">
+                     <p>diretores</p>
+                  </a>
+                  <a href="parqueghibli.html">
+                     <p>parque ghibli</p>
+                  </a>
+                  <a href="museughibli.html">
+                     <p>museu ghibli</p>
+                  </a>
+               </div>
+            </div>
+            <div class="dropdown">
+               <button class="topic">
+                  <p>obras <i class="bx bx-chevron-down"></i></p>
+               </button>
+               <div class="ddmenu">
+                  <a href="filmes.html">
+                     <p>filmes</p>
+                  </a>
+                  <a href="curtame.html">
+                     <p>curta-metragens</p>
+                  </a>
+                  <a href="galeria.html">
+                     <p>galeria</p>
+                  </a>
+               </div>
+            </div>
+            <button class="topic">
+               <a href="noticias.html">
+                  <p>notícias</p>
+               </a>
+            </button>
+            <button class="topic">
+               <a href="contato.html">
+                  <p>contato</p>
+               </a>
+            </button>
+            <button class="topic">
+               <a href="login.html">
+                  <p class="login-style">login</p>
+               </a>
+            </button>
+         </div>
+      </header>
+      <img src="img/totoro025.jpg" id="bg" />
+      <div id="bloco">
+         <div id="form">
+            <p>Cadastro</p>
+            <form name="login">
+               <label for="nome">Nome</label> <input type="text"  name="nome" class="input" id="nome"> <br>
+               <label for="email">E-mail</label> <input type="text" name="email" class="input" id="email"> <br>
+               <label for="senha">Senha</label> <input type="password" name="senha" class="input" id="senha"> <br>
+               <input type="submit" value="Cadastrar" id="envio" onclick="logar()">
+            </form>
+            <span>Já tem uma conta? <a href="login.html">Faça login</a></span>
+         </div>
+      </div>
+   </div>
+
+   <script>
+      function logar() {
+         var val = document.getElementById('valido');
+         try {
+            // var nome = document.getElementById('nome').value;
+            // var email = document.getElementById('email').value;
+            // var senha = document.getElementById('senha').value;
+            var nome = document.forms['login']['nome'].value;
+            var email = document.forms['login']['email'].value;
+            var senha = document.forms['login']['senha'].value;
+            if (nome == null || nome == '' || email == null || email == '' || senha == null || senha == '') {
+               alert('Todos os campos devem ser preenchidos');
+               throw 'Todos os campos devem ser preenchidos';
+            }
+            // validar email
+            var verEmail = document.forms['login']['email'].value;
+            var at = verEmail.indexOf('@');
+            var dot = verEmail.lastIndexOf('.');
+            if (at<1 || dot<at+2 || dot+2>=verEmail.length) {
+               alert('Email inválido');
+               throw 'Email inválido';
+            } else {
+               alert('Cadastro concluído!');
+            }
+            return true;
+         } catch (erro) {
+            val.innerHTML = 'Erro: ' + erro;
+            return false;
+         }
+      }
+   </script>
+
+</body>
+
+</html>
